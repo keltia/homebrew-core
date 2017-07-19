@@ -11,16 +11,16 @@ class Unbound < Formula
   end
 
   depends_on "openssl"
-  depends_on "libevent"
+  #depends_on "libevent"
 
   depends_on :python => :optional
   depends_on "swig" if build.with?("python")
 
+  #--with-libevent=#{Formula["libevent"].opt_prefix}
   def install
     args = %W[
       --prefix=#{prefix}
       --sysconfdir=#{etc}
-      --with-libevent=#{Formula["libevent"].opt_prefix}
       --with-ssl=#{Formula["openssl"].opt_prefix}
     ]
 
